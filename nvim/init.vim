@@ -16,6 +16,9 @@ Plug 'https://github.com/tpope/vim-commentary.git'
 " Surrounding code.
 Plug 'https://github.com/tpope/vim-surround.git'
 
+" Show git changes.
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+
 call plug#end()
 
 " Enable line number
@@ -37,6 +40,9 @@ map <C-n> :NERDTreeToggle<CR>
 " Shortcut for enable fuzzy finder.
 map <C-p> :Files<CR>
 
+" Shortcut for opening buffers a little bit faster.
+nnoremap <Leader>b :ls<Cr>:b<Space>
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -45,7 +51,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
