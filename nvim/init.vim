@@ -203,7 +203,7 @@ set autoread
 au CursorHold * checktime
 
 " Enable autocomment in when hitting o in normal mode.
-set formatoptions+=o
+set formatoptions+=cro
 
 " Enable spell checking.
 set spell spelllang=en_us
