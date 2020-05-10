@@ -19,6 +19,12 @@ Plug 'https://github.com/tpope/vim-surround.git'
 " Show git changes.
 Plug 'https://github.com/airblade/vim-gitgutter.git'
 
+" Plutin for dart language.
+Plug 'dart-lang/dart-vim-plugin'
+
+" Oceanic Theme.
+Plug 'mhartington/oceanic-next'
+
 call plug#end()
 
 " Enable line number
@@ -38,7 +44,7 @@ set expandtab
 map <C-n> :NERDTreeToggle<CR>
 
 " Shortcut for enable fuzzy finder.
-map <C-p> :Files<CR>
+map <C-p> :GFiles --cached --others --exclude-standard<CR>
 
 " Shortcut for opening buffers a little bit faster.
 nnoremap <Leader>b :ls<Cr>:b<Space>
@@ -183,4 +189,22 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Theme config.
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+syntax enable
+colorscheme OceanicNext
+
+" Automatically reload file, heck one time after 4s of inactivity in normal mode
+set autoread
+au CursorHold * checktime
+
+" Enable autocomment in when hitting o in normal mode.
+set formatoptions+=o
+
+" Enable spell checking.
+set spell spelllang=en_us
 
