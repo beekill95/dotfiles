@@ -30,6 +30,9 @@ Plug 'mhartington/oceanic-next'
 
 call plug#end()
 
+" Set leader
+let mapleader="\\"
+
 " Plugin configurations.
 source $HOME/.config/nvim/coc.vim
 source $HOME/.config/nvim/fzf.vim
@@ -90,10 +93,9 @@ set formatoptions+=cro
 " Enable spell checking.
 set spell spelllang=en_us
 
-" Keymaps.
+" Key maps.
 " Switching buffers faster.
 nnoremap <Leader>b :ls<Cr>:b<Space>
-
 " Easier way to switch to normal mode in insert mode.
 inoremap jk <esc>
 
