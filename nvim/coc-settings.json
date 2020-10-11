@@ -1,4 +1,5 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["python", "dart"],
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "sourcekit.commandPath": "/usr/bin/sourcekit-lsp"
 }

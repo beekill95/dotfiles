@@ -28,6 +28,9 @@ Plug 'https://github.com/rhysd/vim-grammarous.git'
 " Oceanic Theme.
 Plug 'mhartington/oceanic-next'
 
+" Swift syntax highlight + filetypes
+Plug 'apple/swift', { 'branch': 'main', 'rtp': 'utils/vim', 'as': 'swift-syntax'}
+
 call plug#end()
 
 " Set leader
@@ -35,6 +38,7 @@ let mapleader="\\"
 
 " Plugin configurations.
 source $HOME/.config/nvim/coc.vim
+source $HOME/.config/nvim/coc-extensions.vim
 source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/nerd.vim
 
@@ -98,4 +102,6 @@ set spell spelllang=en_us
 nnoremap <Leader>b :ls<Cr>:b<Space>
 " Easier way to switch to normal mode in insert mode.
 inoremap jk <esc>
+" Open coc-explorer.
+nmap <C-e> :CocCommand explorer<cr>
 
