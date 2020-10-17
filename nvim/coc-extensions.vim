@@ -5,5 +5,6 @@ let g:coc_global_extensions = [
             \'coc-python',
             \'coc-json',
             \'coc-flutter',
+            \'coc-julia',
             \]
 

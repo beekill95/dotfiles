@@ -31,6 +31,9 @@ Plug 'mhartington/oceanic-next'
 " Swift syntax highlight + filetypes
 Plug 'apple/swift', { 'branch': 'main', 'rtp': 'utils/vim', 'as': 'swift-syntax'}
 
+" Julia language
+Plug 'JuliaEditorSupport/julia-vim'
+
 call plug#end()
 
 " Set leader

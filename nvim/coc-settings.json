@@ -1,5 +1,17 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["python", "dart"],
     "python.jediEnabled": false,
-    "sourcekit.commandPath": "/usr/bin/sourcekit-lsp"
+    "sourcekit.commandPath": "/usr/bin/sourcekit-lsp",
+    "languageserver": {
+        "julia": {
+            "command": "/usr/bin/julia",
+            "args": [
+                "--startup-file=no",
+                "--history-file=no",
+                "-e",
+                "using LanguageServer;\nusing Pkg;\nimport StaticLint;\nimport SymbolServer;\nenv_path = dirname(Pkg.Types.Context().env.project_file);\ndebug = false;\nserver = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, \"\");\nserver.runlinter = true;\nrun(server);"
+            ],
+            "filetypes": ["julia"]
+        }
+    }
 }
