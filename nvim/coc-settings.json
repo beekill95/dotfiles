@@ -9,7 +9,7 @@
                 "--startup-file=no",
                 "--history-file=no",
                 "-e",
-                "using LanguageServer;\nusing Pkg;\nimport StaticLint;\nimport SymbolServer;\nenv_path = dirname(Pkg.Types.Context().env.project_file);\ndebug = false;\nserver = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, \"\");\nserver.runlinter = true;\nrun(server);"
+                "using LanguageServer, Pkg, Sockets, SymbolServer; env_path = dirname(Pkg.Types.Context().env.project_file); server = LanguageServer.LanguageServerInstance(stdin, stdout, env_path, \"\"); server.runlinter = true; run(server);"
             ],
             "filetypes": ["julia"]
         }
