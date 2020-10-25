@@ -40,10 +40,14 @@ call plug#end()
 let mapleader="\\"
 
 " Plugin configurations.
-source $HOME/.config/nvim/coc.vim
-source $HOME/.config/nvim/coc-extensions.vim
-source $HOME/.config/nvim/fzf.vim
-source $HOME/.config/nvim/nerd.vim
+let g:nvim_config_root = stdpath('config')
+let g:nvim_config_files = ['coc.vim',
+            \ 'coc-extensions.vim',
+            \ 'fzf.vim'
+            \ ]
+for f in g:nvim_config_files
+    execute 'source ' . g:nvim_config_root . '/' . f
+endfor
 
 " Enable line number
 set number
