@@ -101,6 +101,12 @@ set formatoptions+=cro
 " Enable spell checking.
 set spell spelllang=en_us
 
+" Search options.
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
 " Key maps.
 " Switching buffers faster.
 nnoremap <Leader>b :ls<Cr>:b<Space>
