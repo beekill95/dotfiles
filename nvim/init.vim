@@ -3,9 +3,6 @@ call plug#begin()
 " Plugin for intellisense, code complete.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plugin for file explorer.
-Plug 'preservim/nerdtree'
-
 " Fuzzy find finder.
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
