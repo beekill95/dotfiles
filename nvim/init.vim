@@ -110,6 +110,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Usually, I don't like line wrap
+set nowrap
+
 " Splits should go to the right place.
 set splitright
 set splitbelow
