@@ -31,6 +31,9 @@ Plug 'apple/swift', { 'branch': 'main', 'rtp': 'utils/vim', 'as': 'swift-syntax'
 " Julia language
 Plug 'JuliaEditorSupport/julia-vim'
 
+" EditorConfig
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 " Set leader
@@ -107,11 +110,19 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Splits should go to the right place.
+set splitright
+set splitbelow
+
 " Key maps.
 " Switching buffers faster.
 nnoremap <Leader>b :ls<Cr>:b<Space>
+nnoremap <Leader>vb :ls<Cr>:vsp<Space>\|<Space>b<Space>
+nnoremap <Leader>sb :ls<Cr>:sp<Space>\|<Space>b<Space>
+
 " Easier way to switch to normal mode in insert mode.
 inoremap jk <esc>
+
 " Open coc-explorer.
 nmap <C-e> :CocCommand explorer<cr>
 
