@@ -22,8 +22,9 @@ Plug 'dart-lang/dart-vim-plugin'
 " Checking grammar.
 Plug 'https://github.com/rhysd/vim-grammarous.git'
 
-" Oceanic Theme.
-Plug 'mhartington/oceanic-next'
+" Themes.
+" Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 
 " Swift syntax highlight + filetypes
 Plug 'apple/swift', { 'branch': 'main', 'rtp': 'utils/vim', 'as': 'swift-syntax'}
@@ -41,7 +42,8 @@ let mapleader="\\"
 
 " Plugin configurations.
 let g:nvim_config_root = stdpath('config')
-let g:nvim_config_files = ['coc.vim',
+let g:nvim_config_files = [
+            \ 'coc.vim',
             \ 'coc-extensions.vim',
             \ 'fzf.vim'
             \ ]
@@ -89,7 +91,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme OceanicNext
+colorscheme gruvbox
 
 " Automatically reload file, heck one time after 4s of inactivity in normal mode.
 set autoread
