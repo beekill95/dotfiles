@@ -1,0 +1,12 @@
+#!/bin/sh
+
+choice="$(echo -e "logout\nreboot\nshutdown" | rofi -dmenu)"
+
+case $choice in
+    logout) echo 'TODO: not working'
+        ;;
+    reboot) systemctl reboot
+        ;;
+    shutdown) systemctl poweroff
+        ;;
+esac
