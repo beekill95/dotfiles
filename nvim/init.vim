@@ -35,10 +35,13 @@ Plug 'JuliaEditorSupport/julia-vim'
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 
+" Golden ratio
+Plug 'roman/golden-ratio'
+
 call plug#end()
 
 " Set leader
-let mapleader="\\"
+let mapleader=" "
 
 " Plugin configurations.
 let g:nvim_config_root = stdpath('config')
