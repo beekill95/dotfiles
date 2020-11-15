@@ -1,0 +1,12 @@
+#! /bin/bash
+
+WID=$(xdotool getwindowfocus)
+TITLE="$(xprop -id $WID _NET_WM_NAME)"
+NOTFOUND="_NET_WM_NAME:  not found."
+
+if [ "$TITLE" = "$NOTFOUND" ]; then
+    printf ''
+else
+    TITLE=${TITLE#*'"'}; TITLE=${TITLE%'"'*}
+    printf "$TITLE"
+fi
