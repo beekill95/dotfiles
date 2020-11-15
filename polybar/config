@@ -54,10 +54,11 @@ font-0 = fixed:pixelsize=10;1
 font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Solid: style=Solid: size=12;"
 font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Regular: style=Regular: size=12"
 font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular"
+font-4 = "Material Design Icons:style=Regular"
 
 modules-left = bspwm windowname
 ; modules-center = mpd
-modules-right = temperature xbacklight pulseaudio battery date powermenu
+modules-right = temperature xbacklight pulseaudio network battery date powermenu
 
 tray-position = right
 tray-padding = 0
@@ -206,9 +207,9 @@ animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
@@ -259,6 +260,25 @@ menu-2-0 = shutdown
 menu-2-0-exec = systemctl poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/network]
+type = internal/network
+interface = wlo1
+interval = 3.0
+accumulate-stats = true
+unknown-as-up = true
+format-connected = <ramp-signal> <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected = %downspeed:9%
+label-disconnected = 󱛅
+
+ramp-signal-0 = 󰤯
+ramp-signal-1 = 󰤟
+ramp-signal-2 = 󰤢
+ramp-signal-3 = 󰤥
+ramp-signal-4 = 󰤨
+ramp-signal-5 = 󰤨
 
 [module/windowname]
 type = custom/script
