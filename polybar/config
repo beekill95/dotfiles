@@ -207,9 +207,9 @@ animation-charging-2 = 󰂋
 animation-charging-foreground = #fff
 animation-charging-framerate = 750
 
-animation-discharging-0 = 󰁼
+animation-discharging-0 = 󰂂
 animation-discharging-1 = 󰁿
-animation-discharging-2 = 󰂂
+animation-discharging-2 = 󰁼
 animation-discharging-foreground = #fff
 animation-discharging-framerate = 750
 
