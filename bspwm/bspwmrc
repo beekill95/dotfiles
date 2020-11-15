@@ -1,11 +1,10 @@
 #! /bin/sh
 
-WALLPAPER=$HOME/dotfiles/wallpapers/skyfall.jpg
+WALLPAPER=$HOME/dotfiles/wallpapers/citycloud.png
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 feh --bg-fill $WALLPAPER &
-# wal -i $WALLPAPER
 pgrep -x compton > /dev/null || compton -b --experimental-backends --config $HOME/.config/compton/bspwm/compton.conf
 pgrep -x polybar > /dev/null || polybar example &
 pgrep -x redshift > /dev/null || redshift &
@@ -26,10 +25,10 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 # Colors
-bspc config normal_border_color "$color1"
-bspc config active_border_color "$color2"
-bspc config focused_border_color "$color15"
-bspc config presel_feedback_color "$color1"
+bspc config normal_border_color "#a89984"
+bspc config active_border_color "#98971a"
+bspc config focused_border_color "#b8bb26"
+bspc config presel_feedback_color "#a89984"
 
 # Focus follow pointer.
 bspc config focus_follows_pointer true
