@@ -38,6 +38,9 @@ Plug 'editorconfig/editorconfig-vim'
 " Golden ratio
 Plug 'roman/golden-ratio'
 
+" Git integration
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 " Set leader
