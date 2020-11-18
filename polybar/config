@@ -57,7 +57,7 @@ font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular"
 font-4 = "Material Design Icons:style=Regular"
 
 modules-left = bspwm windowname
-; modules-center = mpd
+modules-center = mediactl
 modules-right = temperature xbacklight pulseaudio network battery date powermenu
 
 tray-position = right
@@ -252,6 +252,11 @@ type = custom/script
 exec = ~/dotfiles/bin/windowtitle
 interval = 0.5
 label = %output:0:30:...%
+
+[module/mediactl]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/player-mpris-tail.py --icon-playing 󰐊 --icon-paused 󰏤 -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:$HOME/.config/polybar/scripts/player-mpris-tail.py previous:} 󰘀 %{A} %{A1:$HOME/.config/polybar/scripts/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:$HOME/.config/polybar/scripts/player-mpris-tail.py next:} 󰘁 %{A}'
+tail = true
 
 [settings]
 screenchange-reload = true
