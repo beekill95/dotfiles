@@ -32,6 +32,9 @@ Plug 'apple/swift', { 'branch': 'main', 'rtp': 'utils/vim', 'as': 'swift-syntax'
 " Julia language
 Plug 'JuliaEditorSupport/julia-vim'
 
+" Liquid syntax, Jekyll
+Plug 'tpope/vim-liquid'
+
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 
