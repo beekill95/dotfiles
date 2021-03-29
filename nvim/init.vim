@@ -44,6 +44,9 @@ Plug 'roman/golden-ratio'
 " Git integration
 Plug 'tpope/vim-fugitive'
 
+" Support repeat for surround
+Plug 'tpope/vim-repeat'
+
 call plug#end()
 
 " Set leader
@@ -101,6 +104,7 @@ endif
 
 syntax enable
 colorscheme gruvbox
+hi Normal guibg=NONE ctermbg=NONE
 
 " Automatically reload file, heck one time after 4s of inactivity in normal mode.
 set autoread
@@ -140,3 +144,5 @@ inoremap jk <esc>
 " Open coc-explorer.
 nmap <C-e> :CocCommand explorer<cr>
 
+" Keymap to work with Alacritty on Windows.
+nnoremap <silent> <C-6> <C-^>
