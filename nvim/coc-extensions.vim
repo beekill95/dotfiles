@@ -6,5 +6,6 @@ let g:coc_global_extensions = [
             \'coc-json',
             \'coc-flutter',
             \'coc-julia',
+            \'coc-tsserver',
             \]
 

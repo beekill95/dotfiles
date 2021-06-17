@@ -6,7 +6,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 feh --bg-fill $WALLPAPER &
 pgrep -x compton > /dev/null || compton -b --experimental-backends --config $HOME/.config/compton/bspwm/compton.conf
-pgrep -x polybar > /dev/null || polybar example &
+$HOME/.config/polybar/launch.sh
 pgrep -x redshift > /dev/null || redshift &
 pgrep -x ibus-daemon > /dev/null || ibus-daemon &
 
