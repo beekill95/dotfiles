@@ -1,0 +1,12 @@
+SLATE_HOME="/N/slate/$USER"
+
+# Enable vi mode in bash.
+set -o vi
+
+# Useful alias for myself.
+alias nvim="$SLATE_HOME/bin/nvim.appimage"
+
+# Start ssh-agent automatically
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+fi
