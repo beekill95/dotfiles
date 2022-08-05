@@ -27,13 +27,13 @@ Plug 'https://github.com/rhysd/vim-grammarous.git'
 Plug 'morhetz/gruvbox'
 
 " Swift syntax highlight + filetypes
-Plug 'apple/swift', { 'branch': 'main', 'rtp': 'utils/vim', 'as': 'swift-syntax'}
+" Plug 'apple/swift', { 'branch': 'main', 'rtp': 'utils/vim', 'as': 'swift-syntax'}
 
 " Julia language
-Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'JuliaEditorSupport/julia-vim'
 
 " Liquid syntax, Jekyll
-Plug 'tpope/vim-liquid'
+" Plug 'tpope/vim-liquid'
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
