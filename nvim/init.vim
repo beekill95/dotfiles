@@ -113,6 +113,9 @@ augroup autochecktime
     au CursorHold * checktime
 augroup END
 
+" Enable clipboard support
+set clipboard+=unnamedplus
+
 " Enable auto comment in when hitting o in normal mode.
 set formatoptions+=cro
 
