@@ -51,4 +51,15 @@ return require('packer').startup(function(use)
 
   -- Git integration.
   use 'tpope/vim-fugitive'
+
+  -- File explorer.
+  use {
+  "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
+  }
 end)
