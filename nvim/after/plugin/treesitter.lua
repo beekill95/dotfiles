@@ -1,3 +1,9 @@
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+	return
+end
+
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the four listed parsers should always be installed)
   ensure_installed = { "javascript", "typescript", "python", "rust", "c", "lua", "vim", "help" },
