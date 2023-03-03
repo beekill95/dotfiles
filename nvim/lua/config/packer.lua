@@ -18,7 +18,7 @@ if not status_ok then
 	return
 end
 
-return require('packer').startup(function(use)
+return packer.startup(function(use)
   -- Packer can manage itself.
   use 'wbthomason/packer.nvim'
 
@@ -29,12 +29,7 @@ return require('packer').startup(function(use)
   }
 
   -- Colorscheme.
-  use({
-    'morhetz/gruvbox',
-    config = function()
-      vim.cmd('colorscheme gruvbox')
-    end
-  })
+  use 'morhetz/gruvbox'
 
   -- LSP.
   use(
