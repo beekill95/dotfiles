@@ -72,4 +72,10 @@ return packer.startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   }
+
+  -- Quick comment.
+  use "tpope/vim-commentary"
+
+  -- Change surround.
+  use "tpope/vim-surround"
 end)
