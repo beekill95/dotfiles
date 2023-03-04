@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap.set
 
 -- Open default file explorer.
-keymap("n", "<leader>e", vim.cmd.Ex, opts)
+keymap("n", "<C-e>", vim.cmd.Ex, opts)
 
 -- WINDOWS.
 -- Move between windows.
@@ -17,10 +17,10 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 
 -- Resize windows.
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Down>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-S-Up>", ":resize +2<CR>", opts)
+keymap("n", "<C-S-Down>", ":resize -2<CR>", opts)
 
 -- TEXT SELECTION.
 -- Move text up and down.
