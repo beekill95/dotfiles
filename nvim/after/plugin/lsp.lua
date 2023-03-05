@@ -5,13 +5,27 @@ if not status_ok then
     return
 end
 
-lsp.preset('recommended')
+lsp.preset({
+    name = 'recommended',
+    -- Disable default keymaps for renaming, code actions.
+    set_lsp_keymaps = { omit = {"<F2>", "<F4>"} },
+})
+
+-- Setup custom keymaps.
+lsp.on_attach(function(_, bufnr)
+    local opts = { buffer = bufnr }
+    local keymap = vim.keymap.set
+
+    -- Different keymaps for code actions and renaming.
+    keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+    keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+end)
 
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 lsp.setup()
 
--- Show errors.
+-- Show floating errors.
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
