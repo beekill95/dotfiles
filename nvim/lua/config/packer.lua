@@ -79,4 +79,8 @@ return packer.startup(function(use)
 
   -- Change surround.
   use "tpope/vim-surround"
+
+  -- Enable . command in vim to work with plugins' mappings,
+  -- such as vim-surround.
+  use "tpope/vim-repeat"
 end)
