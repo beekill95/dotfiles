@@ -20,3 +20,6 @@ vim.opt.isfname:append("@-@")
 
 -- Update time.
 vim.opt.updatetime = 50
+
+-- I hate wrap line.
+vim.opt.wrap = false
