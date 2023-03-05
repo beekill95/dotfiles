@@ -4,5 +4,9 @@ if not status_ok then
     return
 end
 
-vim.keymap.set('n', '<C-f>', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+local opts = { noremap = true }
+local keymap = vim.keymap.set
+
+keymap('n', '<C-f>', builtin.find_files, opts)
+keymap('n', '<C-p>', builtin.git_files, opts)
+keymap('n', '<leader>b', builtin.buffers, opts)
