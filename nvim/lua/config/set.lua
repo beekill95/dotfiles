@@ -1,25 +1,32 @@
+-- Quick shortcuts.
+local o = vim.opt
+
 -- Enable line number and relative line numbers.
-vim.opt.nu = true
-vim.opt.relativenumber = true
+o.nu = true
+o.relativenumber = true
 
 -- Indentation.
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
+o.expandtab = true
+o.smartindent = true
 
 -- Searching.
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
+o.hlsearch = true
+o.incsearch = true
 
 -- Scrolling.
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+o.scrolloff = 8
+o.signcolumn = "yes"
+o.isfname:append("@-@")
 
 -- Update time.
-vim.opt.updatetime = 50
+o.updatetime = 50
 
 -- I hate wrap line.
-vim.opt.wrap = false
+o.wrap = false
+
+-- It's a bit disoriented without knowing where your cursor is,
+-- hopefully it's better with this option.
+o.cursorline = true
