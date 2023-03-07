@@ -58,6 +58,8 @@ return packer.startup(function(use)
       {'rafamadriz/friendly-snippets'}, -- Optional
     }
   }
+  -- Automatically insert closing parenthesis.
+  use 'windwp/nvim-autopairs'
 
   -- Git integration.
   use 'tpope/vim-fugitive'
