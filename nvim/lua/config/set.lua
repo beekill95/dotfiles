@@ -30,3 +30,5 @@ o.wrap = false
 -- It's a bit disoriented without knowing where your cursor is,
 -- hopefully it's better with this option.
 o.cursorline = true
+
+o.hidden = true

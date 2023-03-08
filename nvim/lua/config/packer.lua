@@ -65,6 +65,12 @@ return packer.startup(function(use)
   use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
 
+  -- Floating terminal.
+  use {
+      "akinsho/toggleterm.nvim",
+      tag = '*',
+  }
+
   -- File explorer.
   use {
   "nvim-neo-tree/neo-tree.nvim",
