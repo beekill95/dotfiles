@@ -12,10 +12,14 @@ neorg.setup {
         ["core.norg.dirman"] = {
             config = {
                 workspaces = {
-                    notes = "~/zettelkasten/notes",
+                    zettelkasten = "~/zettelkasten",
                 },
+                default_workspace = "zettelkasten",
             },
         },
     },
 }
 
+-- Config concealer.
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"

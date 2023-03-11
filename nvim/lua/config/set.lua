@@ -32,3 +32,7 @@ o.wrap = false
 o.cursorline = true
 
 o.hidden = true
+
+-- Config concealer for Neorg.
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
