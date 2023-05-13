@@ -61,6 +61,15 @@ return packer.startup(function(use)
     }
     -- Automatically insert closing parenthesis.
     use 'windwp/nvim-autopairs'
+    -- Haskell support.
+    use {
+        'mrcjkb/haskell-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim', -- optional
+        },
+        branch = '1.x.x', -- recommended
+    }
 
     -- Git integration.
     use 'tpope/vim-fugitive'
