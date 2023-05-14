@@ -22,7 +22,7 @@ neo_tree.setup({
 })
 
 -- Automatically show/hide line number in neotree buffer when enter/leave.
-function setupLineNumberInNeotreeBuffer()
+local function setupLineNumberInNeotreeBuffer()
     vim.api.nvim_create_autocmd({"BufEnter", "BufLeave"}, {
         group = vim.api.nvim_create_augroup("NeotreeLineNumber", { clear = true }),
         desc = "Enable/Disable line number for Neotree buffer.",
@@ -34,7 +34,6 @@ function setupLineNumberInNeotreeBuffer()
                 else
                     vim.cmd "setlocal nonumber norelativenumber"
                 end
-                    
             end
         end,
     })
