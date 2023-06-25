@@ -7,9 +7,9 @@ end
 neorg.setup {
     load = {
         ["core.defaults"] = {}, -- Loads default behaviour
-        ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
         -- Manages Neorg workspaces
-        ["core.norg.dirman"] = {
+        ["core.dirman"] = {
             config = {
                 workspaces = {
                     zettelkasten = "~/zettelkasten",
