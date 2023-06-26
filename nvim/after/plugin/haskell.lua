@@ -8,16 +8,21 @@ end
 
 local def_opts = { noremap = true, silent = true, }
 ht.setup {
-  hls = {
-    debug = false,
-    on_attach = function(client, bufnr)
-      local opts = vim.tbl_extend('keep', def_opts, { buffer = bufnr, })
+    hls = {
+        debug = false,
+        on_attach = function(client, bufnr)
+            local opts = vim.tbl_extend('keep', def_opts, { buffer = bufnr, })
 
-      -- haskell-language-server relies heavily on codeLenses,
-      -- so auto-refresh (see advanced configuration) is enabled by default
-      vim.keymap.set('n', '<space>ca', vim.lsp.codelens.run, opts)
-      vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
-      vim.keymap.set('n', '<space>ea', ht.lsp.buf_eval_all, opts)
-    end,
-  },
+            -- haskell-language-server relies heavily on codeLenses,
+            -- so auto-refresh (see advanced configuration) is enabled by default
+            vim.keymap.set('n', '<space>ca', vim.lsp.codelens.run, opts)
+            vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
+            vim.keymap.set('n', '<space>ea', ht.lsp.buf_eval_all, opts)
+        end,
+        default_settings = {
+            haskell = {
+                formattingProvider = 'ormolu',
+            },
+        },
+    },
 }
