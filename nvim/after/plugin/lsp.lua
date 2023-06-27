@@ -21,11 +21,24 @@ lsp.on_attach(function(_, bufnr)
     keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 end)
 
--- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 lsp.setup()
 
--- Show floating errors.
+-- Configure cmp for autocomplete and suggestions.
+local cmp = require('cmp')
+
+cmp.setup({
+    sources = {
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'buffer', keyword_length = 3 },
+        { name = 'luasnip', keyword_length = 2 },
+        { name = 'nvim_lsp_signature_help' },
+    },
+})
+
+-- Finishing touch.
+-- Show floating diagnostic messages.
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,

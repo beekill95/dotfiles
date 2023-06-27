@@ -53,6 +53,8 @@ return packer.startup(function(use)
             {'hrsh7th/cmp-path'},         -- Optional
             {'saadparwaiz1/cmp_luasnip'}, -- Optional
             {'hrsh7th/cmp-nvim-lua'},     -- Optional
+            -- Suggestions for functions' signature.
+            {'hrsh7th/cmp-nvim-lsp-signature-help'},
 
             -- Snippets
             {'L3MON4D3/LuaSnip'},             -- Required
