@@ -9,6 +9,13 @@ vim.keymap.set("n", "<C-e>", ":NeoTreeFocusToggle<cr>", {})
 
 -- Config.
 neo_tree.setup({
+    default_component_configs = {
+        git_status = {
+            symbols = {
+                unstaged = '☐',
+            },
+        },
+    },
     window = {
         position = "left",
         width = 40,
@@ -26,7 +33,6 @@ local function setupLineNumberInNeotreeBuffer()
     vim.api.nvim_create_autocmd({"BufEnter", "BufLeave"}, {
         group = vim.api.nvim_create_augroup("NeotreeLineNumber", { clear = true }),
         desc = "Enable/Disable line number for Neotree buffer.",
-        -- command = "setlocal number relativenumber",
         callback = function(args)
             if vim.bo[args.buf].filetype == 'neo-tree' then
                 if args.event == 'BufEnter' then
