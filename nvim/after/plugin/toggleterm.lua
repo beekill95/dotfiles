@@ -48,6 +48,7 @@ local lazygit = Terminal:new({
         local opts = {noremap = true, silent = true}
         vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", opts)
         vim.api.nvim_buf_set_keymap(term.bufnr, 't', '<esc>', "<cmd>close<CR>", opts)
+        vim.api.nvim_buf_set_keymap(term.bufnr, 't', [[<C-\>]], "<cmd>close<CR>", opts)
     end,
     -- function to run on closing the terminal
     on_close = function(term)
