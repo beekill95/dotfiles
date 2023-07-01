@@ -22,6 +22,10 @@ ht.setup {
         default_settings = {
             haskell = {
                 formattingProvider = 'ormolu',
+                -- FIXME: Disable auto formatting for cabal files,
+                -- because it doesn't allow the files to be editted.
+                -- cabalFormattingProvider = 'cabalfmt',
+                cabalFormattingProvider = '',
             },
         },
     },
