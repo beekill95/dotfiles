@@ -32,11 +32,15 @@ return packer.startup(function(use)
     -- Colorscheme.
     use 'morhetz/gruvbox'
 
-    -- LSP.
+    -- Syntax highlighting.
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+    -- Purescript support.
+    use 'purescript-contrib/purescript-vim'
+
+    -- LSP.
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
