@@ -21,6 +21,27 @@ lsp.on_attach(function(_, bufnr)
     keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 end)
 
+-- Configure language servers.
+local lspconfig = require('lspconfig')
+
+-- Configure Python's language servers.
+lspconfig.pylsp.setup {
+    settings = {
+        pylsp = {
+            configurationSources = {},
+            plugins = {
+                pycodestyle = {
+                    enabled = false,
+                },
+                pyflakes = {
+                    enabled = false,
+                }
+            }
+        }
+    }
+}
+lspconfig.ruff_lsp.setup{}
+
 lsp.nvim_workspace()
 lsp.setup()
 
