@@ -21,6 +21,8 @@ lsp.on_attach(function(_, bufnr)
     keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 end)
 
+lsp.skip_server_setup({'pylsp'})
+
 -- Configure language servers.
 local lspconfig = require('lspconfig')
 
@@ -30,12 +32,14 @@ lspconfig.pylsp.setup {
         pylsp = {
             configurationSources = {},
             plugins = {
-                pycodestyle = {
-                    enabled = false,
-                },
-                pyflakes = {
-                    enabled = false,
-                }
+                autopep8 = { enabled = false, },
+                pycodestyle = { enabled = false, },
+                pyflakes = { enabled = false, },
+                flake8 = { enabled = false, },
+                pyls_isort = { enabled = false, },
+                mccabe = { enabled = false, },
+                pylint = { enabled = false, },
+                yapf = { enabled = true, },
             }
         }
     }
