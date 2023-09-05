@@ -21,28 +21,46 @@ lsp.on_attach(function(_, bufnr)
     keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 end)
 
-lsp.skip_server_setup({'pylsp'})
+lsp.skip_server_setup({'pylsp', 'pyright'})
 
 -- Configure language servers.
 local lspconfig = require('lspconfig')
 
 -- Configure Python's language servers.
-lspconfig.pylsp.setup {
+-- lspconfig.pylsp.setup {
+--     settings = {
+--         pylsp = {
+--             configurationSources = {},
+--             plugins = {
+--                 autopep8 = { enabled = false, },
+--                 pycodestyle = { enabled = false, },
+--                 pyflakes = { enabled = false, },
+--                 flake8 = { enabled = false, },
+--                 pyls_isort = { enabled = false, },
+--                 mccabe = { enabled = false, },
+--                 pylint = { enabled = false, },
+--                 yapf = { enabled = true, },
+--                 jedi_completion = {
+--                     enabled = true,
+--                     fuzzy = true,
+--                     cache_for = { 'pandas', 'numpy', 'tensorflow', 'matplotlib', 'keras-core', 'torch' },
+--                 },
+--             }
+--         }
+--     }
+-- }
+lspconfig.pyright.setup {
     settings = {
-        pylsp = {
-            configurationSources = {},
-            plugins = {
-                autopep8 = { enabled = false, },
-                pycodestyle = { enabled = false, },
-                pyflakes = { enabled = false, },
-                flake8 = { enabled = false, },
-                pyls_isort = { enabled = false, },
-                mccabe = { enabled = false, },
-                pylint = { enabled = false, },
-                yapf = { enabled = true, },
-            }
-        }
-    }
+        pyright = {autoImportCompletion = true,},
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = 'off',
+            },
+        },
+    },
 }
 lspconfig.ruff_lsp.setup{}
 
