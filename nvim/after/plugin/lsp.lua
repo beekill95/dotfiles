@@ -21,7 +21,7 @@ lsp.on_attach(function(_, bufnr)
     keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 end)
 
-lsp.skip_server_setup({'pylsp', 'pyright'})
+lsp.skip_server_setup({'pylsp', 'pyright', 'efm'})
 
 -- Configure language servers.
 local lspconfig = require('lspconfig')
@@ -63,6 +63,19 @@ lspconfig.pyright.setup {
     },
 }
 lspconfig.ruff_lsp.setup{}
+
+-- Efm: general purpose language server.
+lspconfig.efm.setup {
+    init_options = {documentFormatting = true},
+    settings = {
+        rootMarkers = { '.git/' },
+        languages = {
+            python = {
+                { formatCommand = 'yapf --quiet', formatStdin = true }
+            }
+        }
+    }
+}
 
 lsp.nvim_workspace()
 lsp.setup()
