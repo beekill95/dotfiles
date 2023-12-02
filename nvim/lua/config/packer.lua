@@ -39,6 +39,8 @@ return packer.startup(function(use)
     }
     -- Purescript support.
     use 'purescript-contrib/purescript-vim'
+    -- Hy language support.
+    use 'hylang/vim-hy'
 
     -- LSP.
     use {
@@ -97,6 +99,9 @@ return packer.startup(function(use)
             "MunifTanjim/nui.nvim",
         }
     }
+
+    -- Undo Tree.
+    use 'mbbill/undotree'
 
     -- Quick comment.
     use "tpope/vim-commentary"
