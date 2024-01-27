@@ -65,17 +65,17 @@ lspconfig.pyright.setup {
 lspconfig.ruff_lsp.setup{}
 
 -- Efm: general purpose language server.
-lspconfig.efm.setup {
-    init_options = {documentFormatting = true},
-    settings = {
-        rootMarkers = { '.git/' },
-        languages = {
-            python = {
-                { formatCommand = 'yapf --quiet', formatStdin = true }
-            }
-        }
-    }
-}
+-- lspconfig.efm.setup {
+--     init_options = {documentFormatting = true},
+--     settings = {
+--         rootMarkers = { '.git/' },
+--         languages = {
+--             python = {
+--                 { formatCommand = 'yapf --quiet', formatStdin = true }
+--             }
+--         }
+--     }
+-- }
 
 lsp.nvim_workspace()
 lsp.setup()
