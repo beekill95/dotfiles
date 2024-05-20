@@ -2,7 +2,7 @@
 -- https://github.com/MrcJkb/haskell-tools.nvim#quick-setup
 local status_ok, ht = pcall(require, "haskell-tools")
 if not status_ok then
-    vim.notify("Haskell-tools plugin not found! Quit configuring!")
+    vim.notify("Haskell-tools plugin not found! No keymap is set for haskell files.")
     return
 end
 
