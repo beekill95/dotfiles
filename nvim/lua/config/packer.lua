@@ -123,6 +123,7 @@ return packer.startup(function(use)
     --     end,
     -- }
 
-    -- Vim slime for sending code to REPL.
-    use "jpalardy/vim-slime"
+    -- Sending code to REPL.
+    -- use "jpalardy/vim-slime"
+    use {'Vigemus/iron.nvim'}
 end)
