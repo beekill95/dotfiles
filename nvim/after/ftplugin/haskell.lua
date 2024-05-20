@@ -6,7 +6,8 @@ if not status_ok then
     return
 end
 
-local def_opts = { noremap = true, silent = true, }
+local bufnr = vim.api.nvim_get_current_buf()
+local def_opts = { noremap = true, silent = true, buffer = bufnr, }
 vim.keymap.set('n', '<space>ca', vim.lsp.codelens.run, opts)
 vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
 vim.keymap.set('n', '<space>ea', ht.lsp.buf_eval_all, opts)
