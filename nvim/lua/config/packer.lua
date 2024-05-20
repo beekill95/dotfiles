@@ -114,9 +114,15 @@ return packer.startup(function(use)
     use "tpope/vim-repeat"
 
     -- For note taking.
-    use {
-        "nvim-neorg/neorg",
-        run = ":Neorg sync-parsers",
-        requires = "nvim-lua/plenary.nvim",
-    }
+    -- use {
+    --     "nvim-neorg/neorg",
+    --     rocks = { "lua-utils.nvim", "nvim-nio", "nui.nvim", "plenary.nvim", "pathlib.nvim" },
+    --     tag = "2.x", -- Pin Neorg to the latest stable release
+    --     config = function()
+    --         require("neorg").setup()
+    --     end,
+    -- }
+
+    -- Vim slime for sending code to REPL.
+    use "jpalardy/vim-slime"
 end)
