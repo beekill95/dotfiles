@@ -13,7 +13,8 @@ iron.setup {
             python = {
                 -- Can be a table or a function that
                 -- returns a table (see below)
-                command = {"python"}
+                command = { "ipython", "--no-autoindent" },
+                format = require("iron.fts.common").bracketed_paste,
             }
         },
         -- How the repl window will be displayed
