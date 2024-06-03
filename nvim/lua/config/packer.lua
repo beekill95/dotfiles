@@ -122,6 +122,11 @@ return packer.startup(function(use)
     --         require("neorg").setup()
     --     end,
     -- }
+    -- Try this for note taking.
+      use {
+          'renerocksai/telekasten.nvim',
+          requires = {'nvim-telescope/telescope.nvim'}
+      }
 
     -- Sending code to REPL.
     -- use "jpalardy/vim-slime"
