@@ -123,10 +123,40 @@ return packer.startup(function(use)
     --     end,
     -- }
     -- Try this for note taking.
-      use {
-          'renerocksai/telekasten.nvim',
-          requires = {'nvim-telescope/telescope.nvim'}
-      }
+      -- use {
+      --     'renerocksai/telekasten.nvim',
+      --     requires = {'nvim-telescope/telescope.nvim'}
+      -- }
+      use({
+          "epwalsh/obsidian.nvim",
+          tag = "*",  -- recommended, use latest release instead of latest commit
+          requires = {
+              -- Required.
+              "nvim-lua/plenary.nvim",
+
+              -- see below for full list of optional dependencies 👇
+              "hrsh7th/nvim-cmp",
+              "nvim-telescope/telescope.nvim",
+          },
+          config = function()
+              require("obsidian").setup({
+                  workspaces = {
+                      {
+                          name = "zettelkasten",
+                          path = "~/vaults/zettelkasten",
+                      },
+                  },
+
+                  -- see below for full list of options 👇
+                  completion = {
+                      -- Set to false to disable completion.
+                      nvim_cmp = true,
+                      -- Trigger completion at 2 chars.
+                      min_chars = 2,
+                  },
+              })
+          end,
+      })
 
     -- Sending code to REPL.
     -- use "jpalardy/vim-slime"
