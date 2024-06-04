@@ -4,7 +4,6 @@ if not status_ok then
     return
 end
 
-
 obsidian.setup({
     workspaces = {
         {
@@ -28,7 +27,7 @@ obsidian.setup({
         -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
         -- In this case a note with the title 'My new note' will be given an ID that looks
         -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-        local prefix = os.date("%Y%m%d%H%M", os.time())
+        local prefix = tostring(os.date("%Y%m%d%H%M", os.time()))
 
         if title ~= nil then
             -- If title is given, transform it into valid file name.
@@ -39,3 +38,14 @@ obsidian.setup({
         end
     end,
 })
+
+-- Set keymaps.
+local opts = { noremap = true }
+vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>", opts)
+vim.keymap.set("n", "gd", function()
+    if obsidian.util.cursor_on_markdown_link() then
+        return "<cmd>ObsidianFollowLink<CR>"
+    else
+        return "gd"
+    end
+end, { noremap = false, expr = true })
