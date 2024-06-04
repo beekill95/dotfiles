@@ -33,12 +33,8 @@ o.cursorline = true
 
 o.hidden = true
 
--- Config concealer for Neorg.
-vim.opt.conceallevel = 2
-vim.opt.concealcursor = "nc"
-
 -- Format on save.
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true }),
     desc = "Auto format on save",
     -- command = "setlocal number relativenumber",

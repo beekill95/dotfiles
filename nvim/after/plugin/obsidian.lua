@@ -39,6 +39,10 @@ obsidian.setup({
     end,
 })
 
+-- Config concealer.
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
+
 -- Set keymaps.
 local opts = { noremap = true }
 vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>", opts)
