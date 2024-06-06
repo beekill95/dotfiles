@@ -5,7 +5,9 @@ if not status_ok then
 end
 
 -- Keymap.
-vim.keymap.set("n", "<C-e>", ":NeoTreeFocusToggle<cr>", {})
+local opts = { noremap = true }
+vim.keymap.set("n", "<C-e>", ":NeoTreeFocusToggle<cr>", opts)
+vim.keymap.set("n", "<leader>nr", ":NeoTreeReveal<cr>", opts)
 
 -- Config.
 neo_tree.setup({
@@ -30,7 +32,7 @@ neo_tree.setup({
 
 -- Automatically show/hide line number in neotree buffer when enter/leave.
 local function setupLineNumberInNeotreeBuffer()
-    vim.api.nvim_create_autocmd({"BufEnter", "BufLeave"}, {
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave" }, {
         group = vim.api.nvim_create_augroup("NeotreeLineNumber", { clear = true }),
         desc = "Enable/Disable line number for Neotree buffer.",
         callback = function(args)
