@@ -6,5 +6,5 @@ if not status_ok then
 end
 
 mason.setup {
-    ensure_installed = { "efm", "pyright", "ruff_lsp" },
+    ensure_installed = { "pyright", "ruff_lsp" },
 }
