@@ -54,15 +54,24 @@ lspconfig.pyright.setup {
         pyright = {autoImportCompletion = true,},
         python = {
             analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = 'openFilesOnly',
-                useLibraryCodeForTypes = true,
-                typeCheckingMode = 'off',
+                ignore = { '*' },
+                -- autoSearchPaths = true,
+                -- diagnosticMode = 'openFilesOnly',
+                -- useLibraryCodeForTypes = true,
+                -- typeCheckingMode = 'off',
             },
         },
     },
 }
-lspconfig.ruff_lsp.setup{}
+-- lspconfig.ruff_lsp.setup{}
+lspconfig.ruff.setup{
+    on_attach=function(client, bufnr)
+        if client.name == 'ruff' then
+            -- Disable hover in favor of Pyright
+            client.server_capabilities.hoverProvider = false
+        end
+    end
+}
 
 -- Efm: general purpose language server.
 -- lspconfig.efm.setup {
