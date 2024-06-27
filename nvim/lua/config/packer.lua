@@ -79,6 +79,14 @@ return packer.startup(function(use)
         branch = '1.x.x',                    -- recommended
     }
 
+    -- Function context.
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+        requires = {
+            'nvim-treesitter/nvim-treesitter',
+        },
+    }
+
     -- Git integration.
     use 'tpope/vim-fugitive'
     use 'lewis6991/gitsigns.nvim'
