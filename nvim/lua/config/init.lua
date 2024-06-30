@@ -1,6 +1,7 @@
 require('config.autoread')
 require('config.lazy')
 -- require('config.packer')
+require('config.persistent-undo')
 require('config.providers')
 require('config.remap')
 require('config.set')
