@@ -1,6 +1,9 @@
 return {
     "akinsho/toggleterm.nvim",
-    lazy = false,
+    keys = {
+        { "<C-\\>", ":ToggleTerm", mode = "n", desc = "ToggleTerm" },
+        { "<leader>l", "<cmd>lua _lazygit_toggle()<CR>", mode = "n", desc = "Toggle LazyGit" },
+    },
     config = function()
         local toggleterm = require("toggleterm")
         toggleterm.setup {
