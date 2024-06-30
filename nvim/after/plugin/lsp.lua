@@ -1,30 +1,30 @@
--- Use a protected call so we don't error out on first use
-local status_ok, lsp = pcall(require, "lsp-zero")
-if not status_ok then
-    vim.notify("Lsp-zero plugin not found! Quit configuring!")
-    return
-end
+-- -- Use a protected call so we don't error out on first use
+-- local status_ok, lsp = pcall(require, "lsp-zero")
+-- if not status_ok then
+--     vim.notify("Lsp-zero plugin not found! Quit configuring!")
+--     return
+-- end
 
-lsp.preset({
-    name = 'recommended',
-    -- Disable default keymaps for renaming, code actions.
-    set_lsp_keymaps = { omit = {"<F2>", "<F4>"} },
-})
+-- lsp.preset({
+--     name = 'recommended',
+--     -- Disable default keymaps for renaming, code actions.
+--     set_lsp_keymaps = { omit = {"<F2>", "<F4>"} },
+-- })
 
--- Setup custom keymaps.
-lsp.on_attach(function(_, bufnr)
-    local opts = { buffer = bufnr }
-    local keymap = vim.keymap.set
+-- -- Setup custom keymaps.
+-- lsp.on_attach(function(_, bufnr)
+--     local opts = { buffer = bufnr }
+--     local keymap = vim.keymap.set
 
-    -- Different keymaps for code actions and renaming.
-    keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-    keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-end)
+--     -- Different keymaps for code actions and renaming.
+--     keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+--     keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+-- end)
 
-lsp.skip_server_setup({'pylsp', 'pyright', 'efm'})
+-- lsp.skip_server_setup({'pylsp', 'pyright', 'efm'})
 
--- Configure language servers.
-local lspconfig = require('lspconfig')
+-- -- Configure language servers.
+-- local lspconfig = require('lspconfig')
 
 -- Configure Python's language servers.
 -- lspconfig.pylsp.setup {
@@ -49,66 +49,67 @@ local lspconfig = require('lspconfig')
 --         }
 --     }
 -- }
-lspconfig.pyright.setup {
-    settings = {
-        pyright = {autoImportCompletion = true,},
-        python = {
-            analysis = {
-                ignore = { '*' },
-                -- autoSearchPaths = true,
-                -- diagnosticMode = 'openFilesOnly',
-                -- useLibraryCodeForTypes = true,
-                -- typeCheckingMode = 'off',
-            },
-        },
-    },
-}
--- lspconfig.ruff_lsp.setup{}
-lspconfig.ruff.setup{
-    on_attach=function(client, bufnr)
-        if client.name == 'ruff' then
-            -- Disable hover in favor of Pyright
-            client.server_capabilities.hoverProvider = false
-        end
-    end
-}
-
--- Efm: general purpose language server.
--- lspconfig.efm.setup {
---     init_options = {documentFormatting = true},
+--
+-- lspconfig.pyright.setup {
 --     settings = {
---         rootMarkers = { '.git/' },
---         languages = {
---             python = {
---                 { formatCommand = 'yapf --quiet', formatStdin = true }
---             }
---         }
---     }
+--         pyright = {autoImportCompletion = true,},
+--         python = {
+--             analysis = {
+--                 ignore = { '*' },
+--                 -- autoSearchPaths = true,
+--                 -- diagnosticMode = 'openFilesOnly',
+--                 -- useLibraryCodeForTypes = true,
+--                 -- typeCheckingMode = 'off',
+--             },
+--         },
+--     },
+-- }
+-- -- lspconfig.ruff_lsp.setup{}
+-- lspconfig.ruff.setup{
+--     on_attach=function(client, bufnr)
+--         if client.name == 'ruff' then
+--             -- Disable hover in favor of Pyright
+--             client.server_capabilities.hoverProvider = false
+--         end
+--     end
 -- }
 
-lsp.nvim_workspace()
-lsp.setup()
+-- -- Efm: general purpose language server.
+-- -- lspconfig.efm.setup {
+-- --     init_options = {documentFormatting = true},
+-- --     settings = {
+-- --         rootMarkers = { '.git/' },
+-- --         languages = {
+-- --             python = {
+-- --                 { formatCommand = 'yapf --quiet', formatStdin = true }
+-- --             }
+-- --         }
+-- --     }
+-- -- }
 
--- Configure cmp for autocomplete and suggestions.
-local cmp = require('cmp')
+-- lsp.nvim_workspace()
+-- lsp.setup()
 
-cmp.setup({
-    sources = {
-        { name = 'path' },
-        { name = 'nvim_lsp' },
-        { name = 'buffer', keyword_length = 3 },
-        { name = 'luasnip', keyword_length = 2 },
-        { name = 'nvim_lsp_signature_help' },
-    },
-})
+-- -- Configure cmp for autocomplete and suggestions.
+-- local cmp = require('cmp')
 
--- Finishing touch.
--- Show floating diagnostic messages.
-vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  update_in_insert = false,
-  underline = true,
-  severity_sort = false,
-  float = true,
-})
+-- cmp.setup({
+--     sources = {
+--         { name = 'path' },
+--         { name = 'nvim_lsp' },
+--         { name = 'buffer', keyword_length = 3 },
+--         { name = 'luasnip', keyword_length = 2 },
+--         { name = 'nvim_lsp_signature_help' },
+--     },
+-- })
+
+-- -- Finishing touch.
+-- -- Show floating diagnostic messages.
+-- vim.diagnostic.config({
+--   virtual_text = true,
+--   signs = true,
+--   update_in_insert = false,
+--   underline = true,
+--   severity_sort = false,
+--   float = true,
+-- })
