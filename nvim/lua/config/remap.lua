@@ -2,6 +2,7 @@ local opts = { noremap = true }
 
 -- Leader.
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Shoten kepmap function.
 local keymap = vim.keymap.set
