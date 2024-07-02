@@ -1,7 +1,7 @@
 return {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         -- LSP Support
         { 'neovim/nvim-lspconfig' },             -- Required
@@ -37,7 +37,7 @@ return {
         lsp.preset({
             name = 'recommended',
             -- Disable default keymaps for renaming, code actions.
-            set_lsp_keymaps = { omit = {"<F2>", "<F4>"} },
+            set_lsp_keymaps = { omit = { "<F2>", "<F4>" } },
         })
 
         -- -- Setup custom keymaps.
@@ -50,7 +50,7 @@ return {
             keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
         end)
 
-        lsp.skip_server_setup({'pyright', 'ruff'})
+        lsp.skip_server_setup({ 'pyright', 'ruff' })
 
         -- -- Configure language servers.
         local lspconfig = require('lspconfig')
@@ -58,7 +58,7 @@ return {
         -- Configure Python's language servers.
         lspconfig.pyright.setup {
             settings = {
-                pyright = {autoImportCompletion = true,},
+                pyright = { autoImportCompletion = true, },
                 python = {
                     analysis = {
                         ignore = { '*' },
@@ -71,8 +71,8 @@ return {
             },
         }
 
-        lspconfig.ruff.setup{
-            on_attach=function(client, bufnr)
+        lspconfig.ruff.setup {
+            on_attach = function(client, bufnr)
                 if client.name == 'ruff' then
                     -- Disable hover in favor of Pyright
                     client.server_capabilities.hoverProvider = false
@@ -90,8 +90,8 @@ return {
             sources = {
                 { name = 'path' },
                 { name = 'nvim_lsp' },
-                { name = 'buffer', keyword_length = 3 },
-                { name = 'luasnip', keyword_length = 2 },
+                { name = 'buffer',                 keyword_length = 3 },
+                { name = 'luasnip',                keyword_length = 2 },
                 { name = 'nvim_lsp_signature_help' },
             },
         })
@@ -99,12 +99,12 @@ return {
         -- Finishing touch.
         -- Show floating diagnostic messages.
         vim.diagnostic.config({
-          virtual_text = true,
-          signs = true,
-          update_in_insert = false,
-          underline = true,
-          severity_sort = false,
-          float = true,
+            virtual_text = true,
+            signs = true,
+            update_in_insert = false,
+            underline = true,
+            severity_sort = false,
+            float = true,
         })
     end
 }
