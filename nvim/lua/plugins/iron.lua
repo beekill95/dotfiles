@@ -12,7 +12,14 @@ return {
                     python = {
                         -- Can be a table or a function that
                         -- returns a table (see below)
-                        command = { "ipython", "--no-autoindent" },
+                        -- command = { "ipython", "--no-autoindent" },
+                        command = function()
+                            if vim.fn.executable("ipython") == 1 then
+                                return { "ipython", "--no-autoindent" }
+                            else
+                                return { "python3" }
+                            end
+                        end,
                         format = require("iron.fts.common").bracketed_paste,
                     }
                 },
@@ -53,4 +60,3 @@ return {
         vim.keymap.set('n', '<space>rh', '<cmd>IronHide<cr>')
     end
 }
-
