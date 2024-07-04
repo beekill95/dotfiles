@@ -28,4 +28,3 @@ return {
         keymap('n', '<leader>b', builtin.buffers, opts)
     end
 }
-
