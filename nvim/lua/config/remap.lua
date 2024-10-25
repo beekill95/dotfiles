@@ -2,12 +2,13 @@ local opts = { noremap = true }
 
 -- Leader.
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Shoten kepmap function.
 local keymap = vim.keymap.set
 
 -- Open default file explorer.
-keymap("n", "<C-e>", vim.cmd.Ex, opts)
+-- keymap("n", "<C-e>", vim.cmd.Ex, opts)
 
 -- WINDOWS.
 -- Move between windows.
