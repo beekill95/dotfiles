@@ -25,6 +25,10 @@ return {
             },
         },
         notes_subdir = "notes",
+        daily_notes = {
+            folder = "zettelkasten/diary",
+            default_tags = { "diary" },
+        },
         -- Optional, customize how note IDs are generated given an optional title.
         ---@param title string|?
         ---@return string
