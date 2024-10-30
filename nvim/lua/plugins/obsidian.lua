@@ -48,5 +48,8 @@ return {
             local prefix = tostring(os.date("%Y%m%d%H%M", os.time()))
             return prefix .. "-" .. suffix
         end,
+        attachments = {
+            img_folder = "assets"
+        },
     },
 }
