@@ -1,7 +1,7 @@
 return {
     "akinsho/toggleterm.nvim",
     keys = {
-        { "<C-\\>", ":ToggleTerm", mode = "n", desc = "ToggleTerm" },
+        { "<C-\\>",    ":ToggleTerm",                    mode = "n", desc = "ToggleTerm" },
         { "<leader>l", "<cmd>lua _lazygit_toggle()<CR>", mode = "n", desc = "Toggle LazyGit" },
     },
     config = function()
@@ -36,7 +36,7 @@ return {
         -- Lazygit in toggleterm.
         local Terminal = require("toggleterm.terminal").Terminal
         local lazygit  = Terminal:new({
-            cmd = "lazygit",
+            cmd = (jit.os == 'Windows') and "lazygit.exe" or "lazygit",
             dir = "git_dir",
             hidden = true,
             direction = "float",
@@ -64,4 +64,3 @@ return {
         vim.api.nvim_set_keymap("n", "<leader>l", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
     end
 }
-
