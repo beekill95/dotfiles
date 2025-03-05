@@ -1,6 +1,6 @@
 return {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
+    branch = 'v4.x',
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         -- LSP Support
@@ -23,6 +23,8 @@ return {
         { 'rafamadriz/friendly-snippets' }, -- Optional
     },
     config = function()
+        vim.opt.signcolumn = "yes"
+
         -- Setup mason.
         local mason = require("mason")
         mason.setup {}
@@ -33,24 +35,33 @@ return {
             ensure_installed = { "pyright", "ruff" },
         }
 
-        local lsp = require("lsp-zero")
-        lsp.preset({
-            name = 'recommended',
-            -- Disable default keymaps for renaming, code actions.
-            set_lsp_keymaps = { omit = { "<F2>", "<F4>" } },
-        })
+        local lspconfig_defaults = require('lspconfig').util.default_config
+        lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+            'force',
+            lspconfig_defaults.capabilities,
+            require('cmp_nvim_lsp').default_capabilities()
+        )
 
         -- -- Setup custom keymaps.
-        lsp.on_attach(function(_, bufnr)
-            local opts = { buffer = bufnr }
-            local keymap = vim.keymap.set
+        vim.api.nvim_create_autocmd("LspAttach", {
+            desc = "LSP actions",
+            callback = function(event)
+                local opts = { buffer = event.bufnr }
+                local keymap = vim.keymap.set
 
-            -- Different keymaps for code actions and renaming.
-            keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-            keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-        end)
+                -- Different keymaps for code actions and renaming.
+                keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+                keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 
-        lsp.skip_server_setup({ 'pyright', 'ruff' })
+                -- Jump to definition and stuffs.
+                keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+                keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+                keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+                keymap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+                keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+                keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+            end
+        })
 
         -- -- Configure language servers.
         local lspconfig = require('lspconfig')
@@ -80,9 +91,6 @@ return {
             end
         }
 
-        lsp.nvim_workspace()
-        lsp.setup()
-
         -- Configure cmp for autocomplete and suggestions.
         local cmp = require('cmp')
 
@@ -94,6 +102,12 @@ return {
                 { name = 'luasnip',                keyword_length = 2 },
                 { name = 'nvim_lsp_signature_help' },
             },
+            snippet = {
+                expand = function(args)
+                    vim.snippet.expand(args.body)
+                end,
+            },
+            mapping = cmp.mapping.preset.insert({}),
         })
 
         -- Finishing touch.
