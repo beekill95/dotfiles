@@ -1,3 +1,7 @@
+local function getDirectoryName(filepath)
+    return filepath:match("(.+)/") or filepath:match("(.+\\)")
+end
+
 return {
     "Vigemus/iron.nvim",
     ft = "python",
@@ -13,14 +17,23 @@ return {
                         -- Can be a table or a function that
                         -- returns a table (see below)
                         -- command = { "ipython", "--no-autoindent" },
-                        command = function()
+                        command = function(meta)
+                            local dirname = getDirectoryName(vim.api.nvim_buf_get_name(meta.current_bufnr))
                             if vim.fn.executable("ipython") == 1 then
                                 return { "ipython", "--no-autoindent" }
+                                -- return { "cd", dirname, "&&", "ipython", "--no-autoindent" }
+                                -- return {
+                                --     "ipython -c '%cd " .. dirname .. "'",
+                                --     -- "-c '%cd " .. dirname .. "'",
+                                --     "--no-autoindent",
+                                --     "-i",
+                                -- }
                             else
-                                return { "python3" }
+                                return { "cd", dirname, "&&", "python3" }
                             end
                         end,
                         format = require("iron.fts.common").bracketed_paste,
+                        block_dividers = { "# %%", "#%%" },
                     }
                 },
                 -- How the repl window will be displayed
