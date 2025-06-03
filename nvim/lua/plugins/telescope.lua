@@ -25,6 +25,7 @@ return {
 
         keymap('n', '<C-f>', builtin.find_files, opts)
         keymap('n', '<C-p>', builtin.git_files, opts)
+        keymap('n', '<C-g>', builtin.live_grep, opts)
         keymap('n', '<leader>b', builtin.buffers, opts)
     end
 }
