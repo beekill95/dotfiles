@@ -91,6 +91,15 @@ return {
             end
         }
 
+        lspconfig.denols.setup {
+            settings = {
+                root_markers = { "deno.lock" },
+            },
+        }
+
+        lspconfig.zls.setup {}
+        lspconfig.pyrefly.setup {}
+
         -- Configure cmp for autocomplete and suggestions.
         local cmp = require('cmp')
 
