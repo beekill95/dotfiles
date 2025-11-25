@@ -9,4 +9,5 @@ if jit.os == 'Windows' then
 end
 
 require('config.lazy')
+require('config.lsp')
 -- require('config.packer')
