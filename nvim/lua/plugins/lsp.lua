@@ -32,7 +32,7 @@ return {
         -- Install the required lsp servers.
         local mason_lspconfigs = require("mason-lspconfig")
         mason_lspconfigs.setup {
-            ensure_installed = { "pyright", "ruff" },
+            ensure_installed = { "pyrefly", "ruff" },
         }
 
         local lspconfig_defaults = require('lspconfig').util.default_config
@@ -67,27 +67,27 @@ return {
         local lspconfig = vim.lsp.config
 
         -- Configure Python's language servers.
-        lspconfig("pyright", {
-            cmd = { "pyright-server", "--stdin" },
-            filetypes = { "python" },
-            settings = {
-                pyright = { autoImportCompletion = true, },
-                python = {
-                    analysis = {
-                        ignore = { '*' },
-                        -- autoSearchPaths = true,
-                        -- diagnosticMode = 'openFilesOnly',
-                        -- useLibraryCodeForTypes = true,
-                        -- typeCheckingMode = 'off',
-                    },
-                },
-            },
-        })
+        -- lspconfig("pyright", {
+        --     cmd = { "pyright-server", "--stdin" },
+        --     filetypes = { "python" },
+        --     settings = {
+        --         pyright = { autoImportCompletion = true, },
+        --         python = {
+        --             analysis = {
+        --                 ignore = { '*' },
+        --                 -- autoSearchPaths = true,
+        --                 -- diagnosticMode = 'openFilesOnly',
+        --                 -- useLibraryCodeForTypes = true,
+        --                 -- typeCheckingMode = 'off',
+        --             },
+        --         },
+        --     },
+        -- })
 
-        lspconfig("ruff", {
-            cmd = { "ruff", "server" },
-            filetypes = { "python" },
-        })
+        -- lspconfig("ruff", {
+        --     cmd = { "ruff", "server" },
+        --     filetypes = { "python" },
+        -- })
 
         -- lspconfig.ruff.setup {
         --     on_attach = function(client, bufnr)
