@@ -64,10 +64,12 @@ return {
         })
 
         -- -- Configure language servers.
-        local lspconfig = require('lspconfig')
+        local lspconfig = vim.lsp.config
 
         -- Configure Python's language servers.
-        lspconfig.pyright.setup {
+        lspconfig("pyright", {
+            cmd = { "pyright-server", "--stdin" },
+            filetypes = { "python" },
             settings = {
                 pyright = { autoImportCompletion = true, },
                 python = {
@@ -80,16 +82,21 @@ return {
                     },
                 },
             },
-        }
+        })
 
-        lspconfig.ruff.setup {
-            on_attach = function(client, bufnr)
-                if client.name == 'ruff' then
-                    -- Disable hover in favor of Pyright
-                    client.server_capabilities.hoverProvider = false
-                end
-            end
-        }
+        lspconfig("ruff", {
+            cmd = { "ruff", "server" },
+            filetypes = { "python" },
+        })
+
+        -- lspconfig.ruff.setup {
+        --     on_attach = function(client, bufnr)
+        --         if client.name == 'ruff' then
+        --             -- Disable hover in favor of Pyright
+        --             client.server_capabilities.hoverProvider = false
+        --         end
+        --     end
+        -- }
 
         -- Configure cmp for autocomplete and suggestions.
         local cmp = require('cmp')
@@ -113,7 +120,7 @@ return {
             },
             mapping = cmp.mapping.preset.insert({
                 -- Confirm selection.
-                ['<CR>'] = cmp.mapping.confirm({select = true}),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
                 -- Move up & down between sugesstions using Super Tab.
                 -- Super tab and super shift-tab.
                 ['<Tab>'] = cmp.mapping(function(fallback)
@@ -121,7 +128,7 @@ return {
                     local col = vim.fn.col('.') - 1
 
                     if cmp.visible() then
-                        cmp.select_next_item({behavior = 'select'})
+                        cmp.select_next_item({ behavior = 'select' })
                     elseif luasnip.expand_or_locally_jumpable() then
                         luasnip.expand_or_jump()
                     elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
@@ -129,20 +136,20 @@ return {
                     else
                         cmp.complete()
                     end
-                end, {'i', 's'}),
+                end, { 'i', 's' }),
 
                 -- Super shift tab
                 ['<S-Tab>'] = cmp.mapping(function(fallback)
                     local luasnip = require('luasnip')
 
                     if cmp.visible() then
-                        cmp.select_prev_item({behavior = 'select'})
+                        cmp.select_prev_item({ behavior = 'select' })
                     elseif luasnip.locally_jumpable(-1) then
                         luasnip.jump(-1)
                     else
                         fallback()
                     end
-                end, {'i', 's'}),
+                end, { 'i', 's' }),
             }),
         })
 
