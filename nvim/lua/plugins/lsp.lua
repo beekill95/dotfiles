@@ -32,7 +32,7 @@ return {
         -- Install the required lsp servers.
         local mason_lspconfigs = require("mason-lspconfig")
         mason_lspconfigs.setup {
-            ensure_installed = { "pyrefly", "ruff" },
+            ensure_installed = { "basedpyright", "ruff" },
         }
 
         local lspconfig_defaults = require('lspconfig').util.default_config
@@ -156,12 +156,12 @@ return {
         -- Finishing touch.
         -- Show floating diagnostic messages.
         vim.diagnostic.config({
-            virtual_text = true,
-            signs = true,
-            update_in_insert = false,
-            underline = true,
-            severity_sort = false,
-            float = true,
+            virtual_lines = true,
+            --signs = true,
+            --update_in_insert = false,
+            --underline = true,
+            --severity_sort = false,
+            --float = true,
         })
     end
 }
