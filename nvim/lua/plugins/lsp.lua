@@ -155,13 +155,5 @@ return {
 
         -- Finishing touch.
         -- Show floating diagnostic messages.
-        vim.diagnostic.config({
-            virtual_lines = true,
-            --signs = true,
-            --update_in_insert = false,
-            --underline = true,
-            --severity_sort = false,
-            --float = true,
-        })
     end
 }

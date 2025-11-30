@@ -1,4 +1,5 @@
 require('config.autoread')
+require('config.diagnostic')
 require('config.persistent-undo')
 require('config.providers')
 require('config.remap')
