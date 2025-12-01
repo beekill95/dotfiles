@@ -22,7 +22,7 @@ o.signcolumn = "yes"
 o.isfname:append("@-@")
 
 -- Update time.
-o.updatetime = 50
+o.updatetime = 4000
 
 -- I hate wrap line.
 o.wrap = false

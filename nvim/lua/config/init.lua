@@ -10,4 +10,3 @@ if jit.os == 'Windows' then
 end
 
 require('config.lazy')
--- require('config.packer')
