@@ -46,6 +46,7 @@ return {
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP actions",
             callback = function(event)
+                local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
                 local opts = { buffer = event.bufnr }
                 local keymap = vim.keymap.set
 
@@ -60,6 +61,18 @@ return {
                 keymap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
                 keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
                 keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+
+                -- Enable format on save.
+                if not client:supports_method('textDocument/willSaveWaitUntil')
+                    and client:supports_method('textDocument/formatting') then
+                    vim.api.nvim_create_autocmd('BufWritePre', {
+                        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+                        buffer = event.buf,
+                        callback = function()
+                            vim.lsp.buf.format({ bufnr = event.buf, id = client.id, timeout_ms = 1000 })
+                        end,
+                    })
+                end
             end
         })
 

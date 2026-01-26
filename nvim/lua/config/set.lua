@@ -34,11 +34,11 @@ o.cursorline = true
 o.hidden = true
 
 -- Format on save.
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true }),
-    desc = "Auto format on save",
-    -- command = "setlocal number relativenumber",
-    callback = function(args)
-        vim.lsp.buf.format()
-    end,
-})
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+--     group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true }),
+--     desc = "Auto format on save",
+--     -- command = "setlocal number relativenumber",
+--     callback = function(args)
+--         vim.lsp.buf.format()
+--     end,
+-- })
