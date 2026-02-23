@@ -11,6 +11,7 @@ return {
         _99.setup({
             provider = _99.OpenCodeProvider,
             model = "anthropic/claude-sonnet-4-6",
+            -- model = "google/gemini-3.1-pro-preview",
             logger = {
                 level = _99.DEBUG,
                 path = "/tmp/" .. basename .. ".99.debug",
@@ -21,7 +22,7 @@ return {
             -- and generation will fail refer to tool documentation to resolve
             -- https://opencode.ai/docs/permissions/#external-directories
             -- https://code.claude.com/docs/en/permissions#read-and-edit
-            tmp_dir = "./tmp",
+            tmp_dir = "./.99_tmp",
 
             --- Completions: #rules and @files in the prompt buffer
             completion = {
