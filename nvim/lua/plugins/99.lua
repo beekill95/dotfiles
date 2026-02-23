@@ -1,5 +1,12 @@
 return {
     "ThePrimeagen/99",
+    keys = {
+        -- Some mappings for lazy loading, other mappings can be defined in the config function below.
+        { "<leader>9v", function() require("99").visual() end,                            mode = "v", desc = "99 Visual Prompt", },
+        { "<leader>9s", function() require("99").search() end,                            mode = "n", desc = "99 Search", },
+        { "<leader>9m", function() require("99.extensions.telescope").select_model() end, mode = "n", desc = "99 Model Selection", },
+        { "<leader>9l", function() require("99").view_logs() end,                         mode = "n", desc = "99 Model Selection", },
+    },
     config = function()
         local _99 = require("99")
 
@@ -50,10 +57,10 @@ return {
 
                 --- Configure @file completion (all fields optional, sensible defaults)
                 files = {
-                    -- enabled = true,
-                    -- max_file_size = 102400,     -- bytes, skip files larger than this
-                    -- max_files = 5000,            -- cap on total discovered files
-                    -- exclude = { ".env", ".env.*", "node_modules", ".git", ... },
+                    enabled = true,
+                    max_file_size = 102400, -- bytes, skip files larger than this
+                    max_files = 5000,       -- cap on total discovered files
+                    exclude = { ".env", ".env.*", "node_modules", ".git", ".venv" },
                 },
 
                 --- What autocomplete do you use.  We currently only
@@ -82,17 +89,10 @@ return {
         --
         -- likely ill add a mode check and assert on required visual mode
         -- so just prepare for it now
-        vim.keymap.set("v", "<leader>9v", function()
-            _99.visual()
-        end)
 
         --- if you have a request you dont want to make any changes, just cancel it
         vim.keymap.set("n", "<leader>9x", function()
             _99.stop_all_requests()
-        end)
-
-        vim.keymap.set("n", "<leader>9s", function()
-            _99.search()
         end)
     end,
 }
