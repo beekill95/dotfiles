@@ -59,8 +59,26 @@ return {
                 files = {
                     enabled = true,
                     max_file_size = 102400, -- bytes, skip files larger than this
-                    max_files = 5000,       -- cap on total discovered files
-                    exclude = { ".env", ".env.*", "node_modules", ".git", ".venv" },
+                    max_files = 100000,     -- cap on total discovered files
+                    exclude = {
+                        ".99_tmp",
+                        ".cursor",
+                        ".env",
+                        ".env.*",
+                        ".git",
+                        ".venv",
+                        ".DS_Store",
+                        "*.ipynb",
+                        "*.jpg",
+                        "*.log",
+                        "*.parquet",
+                        "*.pkl",
+                        "*.png",
+                        "__pycache__",
+                        "dist",
+                        "build",
+                        "node_modules",
+                    },
                 },
 
                 --- What autocomplete do you use.  We currently only
