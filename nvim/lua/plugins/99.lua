@@ -17,7 +17,7 @@ return {
         local basename = vim.fs.basename(cwd)
         _99.setup({
             provider = _99.OpenCodeProvider,
-            model = "anthropic/claude-sonnet-4-6",
+            model = "anthropic/claude-haiku-4-5",
             -- model = "google/gemini-3.1-pro-preview",
             logger = {
                 level = _99.DEBUG,
