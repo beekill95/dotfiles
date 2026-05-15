@@ -32,7 +32,7 @@ return {
         -- Install the required lsp servers.
         local mason_lspconfigs = require("mason-lspconfig")
         mason_lspconfigs.setup {
-            ensure_installed = { "ty", "ruff" },
+            ensure_installed = { "ruff", "pyrefly" },
         }
 
         local lspconfig_defaults = require('lspconfig').util.default_config
