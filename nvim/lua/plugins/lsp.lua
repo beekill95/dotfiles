@@ -79,6 +79,16 @@ return {
         -- -- Configure language servers.
         local lspconfig = vim.lsp.config
 
+        lspconfig("pyrefly", {
+            settings = {
+                python = {
+                    pyrefly = {
+                        typeCheckingMode = "default",
+                    },
+                },
+            },
+        })
+
         -- Configure Python's language servers.
         -- lspconfig("pyright", {
         --     cmd = { "pyright-server", "--stdin" },
