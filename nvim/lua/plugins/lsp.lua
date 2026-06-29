@@ -37,10 +37,12 @@ return {
         end
 
         require("blink.cmp").setup({
-            -- Show documentation when selecting a completion item
-            documentation = { auto_show = true, auto_show_delay_ms = 500 },
-            -- Display a preview of the selected item on the current line
-            ghost_text = { enabled = true },
+            completion = {
+                -- Show documentation when selecting a completion item
+                documentation = { auto_show = true, auto_show_delay_ms = 500 },
+                -- Display a preview of the selected item on the current line
+                ghost_text = { enabled = true },
+            },
             -- Show signatures.
             signature = { enabled = true },
             keymap = {
