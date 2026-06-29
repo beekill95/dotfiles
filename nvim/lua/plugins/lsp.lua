@@ -11,6 +11,15 @@ return {
     opts = {
         -- Define servers' settings here.
         servers = {
+            pyrefly = {
+                settings = {
+                    python = {
+                        pyrefly = {
+                            typeCheckingMode = "default",
+                        },
+                    },
+                },
+            },
             lua_ls = {
                 settings = {
                     Lua = {
@@ -30,13 +39,9 @@ return {
             ensure_installed = { "lua_ls", "pyrefly", "ruff" }
         })
 
-        -- Config the servers based on the `opts` field above.
-        for server, config in pairs(opts.servers) do
-            config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-            vim.lsp.config(server, config)
-        end
-
-        require("blink.cmp").setup({
+        -- Config blink completion.
+        local blink = require("blink.cmp")
+        blink.setup({
             completion = {
                 -- Show documentation when selecting a completion item
                 documentation = { auto_show = true, auto_show_delay_ms = 500 },
@@ -54,5 +59,11 @@ return {
                 ['<CR>'] = { 'accept', 'fallback' },
             },
         })
+
+        -- Config the servers based on the `opts` field above.
+        for server, config in pairs(opts.servers) do
+            config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+            vim.lsp.config(server, config)
+        end
     end,
 }
