@@ -25,7 +25,7 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup()
         require("mason-tool-installer").setup({
-            ensure_installed = { "lua_ls", "pyrefly" }
+            ensure_installed = { "lua_ls", "pyrefly", "ruff" }
         })
 
         for server, config in pairs(opts.servers) do
