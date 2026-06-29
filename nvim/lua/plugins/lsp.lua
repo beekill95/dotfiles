@@ -7,6 +7,7 @@ return {
         { "mason-org/mason-lspconfig.nvim" },
         { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     },
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
         -- Define servers' settings here.
         servers = {
@@ -22,15 +23,15 @@ return {
         }
     },
     config = function(_, opts)
+        -- Config mason-related tools.
         require("mason").setup()
         require("mason-lspconfig").setup()
         require("mason-tool-installer").setup({
             ensure_installed = { "lua_ls", "pyrefly", "ruff" }
         })
 
+        -- Config the servers based on the `opts` field above.
         for server, config in pairs(opts.servers) do
-            -- passing config.capabilities to blink.cmp merges with the capabilities in your
-            -- `opts[server].capabilities, if you've defined it
             config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
             vim.lsp.config(server, config)
         end
