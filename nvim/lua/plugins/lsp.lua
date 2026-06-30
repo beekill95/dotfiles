@@ -1,7 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        { "saghen/blink.cmp", version = "1.*" },
+        { "saghen/blink.cmp",                         version = "1.*" },
         { "rafamadriz/friendly-snippets" },
         { "mason-org/mason.nvim" },
         { "mason-org/mason-lspconfig.nvim" },
@@ -60,10 +60,35 @@ return {
             },
         })
 
+
         -- Config the servers based on the `opts` field above.
         for server, config in pairs(opts.servers) do
             config.capabilities = blink.get_lsp_capabilities(config.capabilities)
             vim.lsp.config(server, config)
         end
+
+        -- Config format on save.
+        local format_group_name = "LspFormatting"
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup(format_group_name, { clear = true }),
+            desc = "Format on save globally",
+            callback = function(event)
+                local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
+
+                -- Clear duplicate save hooks.
+                vim.api.nvim_clear_autocmds({ group = format_group_name, buffer = event.buf })
+
+                -- Enable format on save.
+                if client:supports_method('textDocument/formatting') then
+                    vim.api.nvim_create_autocmd('BufWritePre', {
+                        group = format_group_name,
+                        buffer = event.buf,
+                        callback = function()
+                            vim.lsp.buf.format({ bufnr = event.buf, id = client.id, timeout_ms = 1000 })
+                        end,
+                    })
+                end
+            end
+        })
     end,
 }
