@@ -90,5 +90,16 @@ return {
                 end
             end
         })
+
+        -- Config custom keymaps.
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
+            desc = "Custom keymaps for LSPs",
+            callback = function(event)
+                local _opts = { buffer = event.buf }
+
+                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, _opts)
+            end
+        })
     end,
 }
